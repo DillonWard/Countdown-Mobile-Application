@@ -1,0 +1,8 @@
+{
+  "name": "countdown-mobile-application",
+  "app_id": "b1645c4b",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
