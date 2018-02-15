@@ -1,3 +1,25 @@
 page-home {
 
+    .home-page{
+        background-color:#F26724;
+        height: 100% !important;
+        width: 100% !important;
+        margin-bottom: 0;           
+    }
+
+    #countdown-logo{
+        height: 100%;
+        width: 100%;
+        margin:auto;
+        padding-top: 20%;
+        align-content: center;
+        display: block;
+        background-color:#F26724;
+    }
+
+    .scroll-bar-indicator
+    {
+        display: none;
+    }
+
 }
