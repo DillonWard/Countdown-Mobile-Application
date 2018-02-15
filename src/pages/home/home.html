@@ -1,6 +1,14 @@
 <ion-content class="home-page">
-  
-  <ion-img id = "countdown-logo" src="../../assets/imgs/countdown-logo.png"></ion-img>
 
+  <div class="starting animated fadeIn" >
+      <ion-img  id = "countdown-logo" src="../../assets/imgs/countdown-logo.png"></ion-img>
+  </div>
+
+  <div *ngFor="let button of buttons; let i = index">
+      <button class = "hey" id = "{{button.id}}" ion-button full>{{button.text}}</button>
+  </div>
+
+
+ 
 
 </ion-content>
