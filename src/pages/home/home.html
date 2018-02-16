@@ -4,11 +4,12 @@
       <ion-img  id = "countdown-logo" src="../../assets/imgs/countdown-logo.png"></ion-img>
   </div>
 
-  <div *ngFor="let button of buttons; let i = index">
-      <button class = "hey" id = "{{button.id}}" ion-button full>{{button.text}}</button>
-  </div>
-
-
- 
+  <ion-grid>
+      <ion-row>  
+          <ion-col *ngFor="let button of buttons; let i = index">
+                <button class = "start-buttons" id = "{{button.id}}" (click)="navigate()" ion-button>{{button.text}}</button>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
 
 </ion-content>

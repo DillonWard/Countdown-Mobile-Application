@@ -1,7 +1,7 @@
 page-home {
 
     .home-page{
-        background-color: #8B4F7E;
+        background-color: #56417C;
         height: 100% !important;
         width: 100% !important;
         margin-bottom: 0;           
@@ -15,16 +15,19 @@ page-home {
         margin:auto;
         margin-bottom: -20%;
     }
-
-    .hey{
+    .start-buttons{
         font-size: 200%;
-        background-color: rgb(172, 97, 156);
+        width: 100%;
+        height: 150%;
+        background-color: #FFFEFF;
+        color: #56417C;
+        align-content: center;
     }
     #countdown-logo{
         height: 80%;
         width: 100%;
         padding-top: 10%;
-        background-color: #8B4F7E;
+        background-color: #56417C;
     }
 
     .scroll-bar-indicator

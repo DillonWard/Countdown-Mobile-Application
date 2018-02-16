@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { MenuPage } from '../menu/menu';
 
 @Component({
   selector: 'page-home',
@@ -17,15 +18,12 @@ export class HomePage implements OnInit{
 
     this.buttons = [
       {
-        id: "start",
         text: "Start"
-      },
-      {
-        id: "exit",
-        text: "Exit"
       }
     ]
-   
-    
+  }
+
+  navigate(){
+    this.navCtrl.push(MenuPage)
   }
 }
