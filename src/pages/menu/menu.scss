@@ -1,3 +1,49 @@
 page-menu {
 
+    .menu{
+        height: 100% !important;
+        width: 100% !important;
+    }
+    #play{
+        background-color: #EE6E7C;
+    }
+
+    #scores{
+        background-color: #BA6980;
+    }
+
+    #help{
+        background-color: #695877;
+    }
+
+    .list{
+        width: 100% !important;
+        height: 100% !important;
+        margin-bottom: 0;
+        margin-left: -5%;
+        margin-top: -5%;
+    }
+
+    .item{
+        width: 110%;
+        height: 35.21%;
+        text-align: center;
+        color: white;
+        font-size: 25px;
+    }
+
+    .animated{
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .fa{
+        width: 20%;
+    }
+    
+    .scroll-bar-indicator
+    {
+        display: none;
+    }
+
 }

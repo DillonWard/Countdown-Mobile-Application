@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 /**
  * Generated class for the MenuPage page.
@@ -13,9 +14,32 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-menu',
   templateUrl: 'menu.html',
 })
-export class MenuPage {
+export class MenuPage implements OnInit{
+
+  buttons: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  ngOnInit(){
+    this.buttons = [
+      {
+        text:"Play",
+        id: "play",
+        icon: "fa fa-play"
+      },
+      {
+        text: "Scores",
+        id: "scores",
+        icon: "fa fa-align-justify"
+      },
+      {
+        text: "Help",
+        id: "help",
+        icon: "fa fa-question"
+      }
+    ]
+
   }
 
   ionViewDidLoad() {
