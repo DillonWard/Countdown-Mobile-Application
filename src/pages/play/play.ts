@@ -18,8 +18,7 @@ export class PlayPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PlayPage');
+  back(){
+    this.navCtrl.pop()
   }
-
 }
