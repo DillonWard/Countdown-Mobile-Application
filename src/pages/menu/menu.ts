@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-
-/**
- * Generated class for the MenuPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ScoresPage } from '../scores/scores';
+import { PlayPage } from '../play/play';
+import { HelpPage } from '../help/help';
 
 @IonicPage()
 @Component({
@@ -41,6 +37,23 @@ export class MenuPage implements OnInit{
     ]
 
   }
+
+  navigate(param){
+
+    if(param == "play"){
+      this.navCtrl.push(PlayPage)
+    }
+    else if(param == "scores"){
+      this.navCtrl.push(ScoresPage)
+    }
+    else if(param == "help"){
+      this.navCtrl.push(HelpPage)
+    }
+    else{
+      console.log("no")
+    }
+  
+   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');

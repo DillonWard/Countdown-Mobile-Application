@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { MenuPage } from '../pages/menu/menu';
 import { PlayPage } from '../pages/play/play';
 import { ScoresPage } from '../pages/scores/scores';
+import { HelpPage } from '../pages/help/help';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ScoresPage } from '../pages/scores/scores';
     HomePage,
     MenuPage,
     PlayPage,
-    ScoresPage
+    ScoresPage,
+    HelpPage
 
   ],
   imports: [
@@ -29,7 +31,8 @@ import { ScoresPage } from '../pages/scores/scores';
     HomePage,
     MenuPage,
     PlayPage,
-    ScoresPage
+    ScoresPage,
+    HelpPage
   ],
   providers: [
     StatusBar,

@@ -1,6 +1,6 @@
 <ion-content padding class="menu">
     <ion-list class="animated fadeInDown">
-      <ion-item (click)="navigate(item.param)" *ngFor="let item of buttons" no-lines [attr.id] = "item.id">
+      <ion-item (click)="navigate(item.id)" *ngFor="let item of buttons" no-lines [attr.id] = "item.id">
         <ion-row>
           <ion-col col-5>
             <i class = "{{item.icon}} pull-right"></i>
