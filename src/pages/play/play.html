@@ -1,9 +1,16 @@
-<ion-content padding >
+<ion-content padding class="play">
   <i (click)="back()" class="back animated fadeInDown fa fa-arrow-left"></i>
-  
-  <p>  {{startTime}}
-  </p>
-  
 
-</ion-content>  
+  <h4 ion-text id="start-time" *ngIf="startDisplay == true">
+    {{clockDisplay}}
+  </h4>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

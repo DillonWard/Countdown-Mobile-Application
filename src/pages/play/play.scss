@@ -1,6 +1,17 @@
 page-play {
 
+    .play{
+        height: 100%;
+        width: 100%;
+    }
+
     .back{
         font-size: 200%;
+    }
+    
+    #start-time{
+        align-content: center;
+        text-align: center;
+        font-size: 300%;
     }
 }
