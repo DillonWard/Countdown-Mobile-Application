@@ -3,15 +3,25 @@ page-play {
     .play{
         height: 100%;
         width: 100%;
+        background-color: #EE6E7C;
+        color: white;
     }
 
     .back{
         font-size: 200%;
+        color: white;
     }
     
+    .equation-variables{
+        position: fixed;
+        bottom: 50px;
+        align-content: center;
+        right: 3%;
+        font-size: 50px;
+    }
     #start-time{
         align-content: center;
         text-align: center;
-        font-size: 300%;
+        font-size: 70px;
     }
 }

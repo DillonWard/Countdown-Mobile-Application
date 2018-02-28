@@ -21,22 +21,45 @@ export class PlayPage implements OnInit {
   duration = 4;
   seconds = "--";
   clockDisplay: string;
+  equationVars = [];
 
   ngOnInit() {
     this.tickTick();
     this.generateEquation();
+
+    this.equationVars =
+    [
+      {
+        num: this.newEquation.equationVariables[0]
+      },
+      {
+        num: this.newEquation.equationVariables[1]
+      },
+      {
+        num: this.newEquation.equationVariables[2]
+      },
+      {
+        num: this.newEquation.equationVariables[3]
+      },
+      {
+        num: this.newEquation.equationVariables[4]
+      },
+      {
+        num: this.newEquation.equationVariables[5]
+      },
+      {
+        num: this.newEquation.equationVariables[6]
+      },
+    ]
   }
 
 
   generateEquation(){
 
-
     for(var i = 0; i < 6; i++){
 
       this.newEquation.equationVariables.push(Math.floor(Math.random() * 9) + 1);
     }
-    console.log(this.newEquation.equationVariables);
-
   }
 
   tickTick() {
@@ -50,7 +73,6 @@ export class PlayPage implements OnInit {
           this.seconds = (this.duration % 60).toString();
         }
         this.clockDisplay = this.seconds;
-        console.log(this.clockDisplay);
 
         if(this.clockDisplay == "-1"){
           this.startDisplay = false;

@@ -5,10 +5,10 @@
     {{clockDisplay}}
   </h4>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col col-12>
-        
+  <ion-grid class="equation-variables">
+    <ion-row >
+      <ion-col *ngFor="let item of equationVars; let i = index">
+        {{item.num}}
       </ion-col>
     </ion-row>
   </ion-grid>
