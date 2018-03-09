@@ -5,7 +5,7 @@
     {{clockDisplay}}
   </h4>
 
-  <ion-grid class="equation-variables">
+  <ion-grid class="equation-variables" *ngIf="startDisplay == false">
     <ion-row >
       <ion-col *ngFor="let item of equationVars; let i = index">
         {{item.num}}

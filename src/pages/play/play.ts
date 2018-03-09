@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import  { Equation } from '../../models/equations';
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 @IonicPage()
 @Component({
@@ -9,7 +10,8 @@ import  { Equation } from '../../models/equations';
 })
 export class PlayPage implements OnInit {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private speechRecognition: SpeechRecognition, private platform: Platform, private changeRef: ChangeDetectorRef) {
   }
 
   newEquation: Equation = {
@@ -19,9 +21,26 @@ export class PlayPage implements OnInit {
  
   startDisplay = true;
   duration = 4;
-  seconds = "--";
+  seconds = "";
   clockDisplay: string;
   equationVars = [];
+  matches: String[];
+
+  getPermission(){
+    this.speechRecognition.hasPermission()
+      .then((hasPermission: boolean) =>{
+        if(!hasPermission){
+          this.speechRecognition.requestPermission();
+        }
+      });
+  }
+
+  startListening(){
+    this.speechRecognition.startListening().subscribe(matches =>{
+      this.matches = matches;
+      this.changeRef.detectChanges();
+    });
+  }
 
   ngOnInit() {
     this.tickTick();
@@ -53,7 +72,6 @@ export class PlayPage implements OnInit {
     ]
   }
 
-
   generateEquation(){
 
     for(var i = 0; i < 6; i++){
@@ -63,6 +81,7 @@ export class PlayPage implements OnInit {
   }
 
   tickTick() {
+    this.getPermission()
 
     if (this.duration > 0) {
       var myInterval = setInterval(() => {
@@ -77,6 +96,7 @@ export class PlayPage implements OnInit {
         if(this.clockDisplay == "-1"){
           this.startDisplay = false;
           clearInterval(myInterval);
+          this.startListening()
         }
   
       }, 1000);
@@ -87,5 +107,8 @@ export class PlayPage implements OnInit {
 
   back() {
     this.navCtrl.pop()
+    this.speechRecognition.stopListening().then(() =>{
+      console.log("stopped")
+    });
   }
 }
