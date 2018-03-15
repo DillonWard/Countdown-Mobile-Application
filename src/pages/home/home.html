@@ -5,7 +5,7 @@
   </div>
 
   <ion-grid>
-      <ion-row>  
+      <ion-row center>  
           <ion-col *ngFor="let button of buttons; let i = index">
                 <button class = "start-buttons" id = "{{button.id}}" (click)="navigate()" ion-button>{{button.text}}</button>
           </ion-col>

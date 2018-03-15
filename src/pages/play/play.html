@@ -5,8 +5,18 @@
     {{clockDisplay}}
   </h4>
 
+  {{matches}}
+  {{newEquation.answer}}
+
+
   <ion-grid class="equation-variables" *ngIf="startDisplay == false">
-    <ion-row >
+
+      <ion-row center padding>
+        <ion-col center padding>
+            <button class = "listen-button" id = "listen-button" (click)="startListening()" ion-button>Speak</button>
+        </ion-col>
+      </ion-row>
+    <ion-row>
       <ion-col *ngFor="let item of equationVars; let i = index">
         {{item.num}}
       </ion-col>
