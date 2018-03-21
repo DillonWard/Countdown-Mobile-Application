@@ -1,5 +1,5 @@
 export class Equation {
     answer: number;
-    equationSigns: number[];
+    equationSign: number;
     equationVariables: number[];
 }

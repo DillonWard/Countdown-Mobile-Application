@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import  { Equation } from '../../models/equations';
+import { Equation } from '../../models/equations';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 @IonicPage()
@@ -17,9 +17,9 @@ export class PlayPage implements OnInit {
   newEquation: Equation = {
     answer: undefined,
     equationVariables: [undefined],
-    equationSigns: [undefined]
+    equationSign: undefined
   }
- 
+
   startDisplay = true;
   duration = 4;
   seconds = "";
@@ -28,104 +28,61 @@ export class PlayPage implements OnInit {
   matches: String[];
   tempSum = 0;
 
-  getPermission(){
+  getPermission() {
     this.speechRecognition.hasPermission()
-      .then((hasPermission: boolean) =>{
-        if(!hasPermission){
+      .then((hasPermission: boolean) => {
+        if (!hasPermission) {
           this.speechRecognition.requestPermission();
         }
       });
   }
 
-  generateEquation(){
+  generateEquation() {
 
-    for(var i = 0; i < 6; i++){
+    for (var i = 0; i < 2; i++) {
 
       this.newEquation.equationVariables.push(Math.floor(Math.random() * 9) + 1);
       console.log(this.newEquation.equationVariables[i])
-      this.equationVars[i] = this.newEquation.equationVariables[i]; 
+      this.equationVars[i] = this.newEquation.equationVariables[i];
 
     }
 
-    for(var r = 0; r < 5; r++){
-      this.newEquation.equationSigns.push(Math.floor(Math.random() * 4) + 1);
 
+    this.newEquation.equationSign = Math.floor(Math.random() * 2) + 1;
+    console.log(this.newEquation.equationSign);
+
+    switch (this.newEquation.equationSign) {
+      case 1:
+        this.add(this.newEquation.equationVariables[0], this.newEquation.equationVariables[1]);
+        console.log("add")
+        break;
+      
+        case 2:
+        this.subtract(this.newEquation.equationVariables[0], this.newEquation.equationVariables[1]);
+        console.log("subtract")
+        break;
     }
+
+
     console.log("Signs generated")
 
-    for(var k = 0; k < 6; k++){
-      for(var j = 0; j < 5; j++){
-
-        if(this.newEquation.equationVariables[k] = 0){
-          switch(this.newEquation.equationSigns[j]){
-            case 1:
-            this.multiply(this.newEquation.equationVariables[i], this.newEquation.equationVariables[k + 1]);
-            break;
-
-            case 2:
-            this.divide(this.newEquation.equationVariables[i], this.newEquation.equationVariables[k + 1]);
-            break;
-
-            case 3:
-            this.add(this.newEquation.equationVariables[i], this.newEquation.equationVariables[k + 1]);
-            break;
-
-            case 4:
-            this.subtract(this.newEquation.equationVariables[i], this.newEquation.equationVariables[k + 1]);
-            break;
-          }
-        } 
-
-        else{
-          switch (this.newEquation.equationSigns[j]){
-            case 1:
-            this.multiply(this.tempSum, this.newEquation.equationVariables[k]);
-            break;
-
-            case 2:
-            this.divide(this.tempSum, this.newEquation.equationVariables[k + 1]);
-            break;
-
-            case 3:
-            this.add(this.tempSum, this.newEquation.equationVariables[k + 1]);
-            break;
-
-            case 4:
-            this.subtract(this.tempSum, this.newEquation.equationVariables[k + 1]);
-            break;
-          }
-
-        }
-      }
-    }
-
-    this.newEquation.answer = this.tempSum;
 
   }
 
-  multiply(paramOne, paramTwo){
 
-    this.tempSum += paramOne * paramTwo;
+  add(paramOne, paramTwo) {
+
+    this.newEquation.answer = paramOne + paramTwo;
   }
 
-  divide(paramOne, paramTwo){
+  subtract(paramOne, paramTwo) {
 
-    this.tempSum += paramOne / paramTwo;
-  }
-
-  add(paramOne, paramTwo){
-
-    this.tempSum += paramOne + paramTwo;
-  }
-
-  subtract(paramOne, paramTwo){
-
-    this.tempSum += paramOne + paramTwo;
+    this.newEquation.answer = paramOne - paramTwo;
   }
 
 
-  startListening(){
-    this.speechRecognition.startListening().subscribe(matches =>{
+  startListening() {
+    this.speechRecognition.startListening().subscribe(matches => {
       console.log("Listening.")
       this.matches = matches;
       this.changeRef.detectChanges();
@@ -144,18 +101,18 @@ export class PlayPage implements OnInit {
         }
         this.clockDisplay = this.seconds;
 
-        if(this.clockDisplay == "-1"){
+        if (this.clockDisplay == "-1") {
           this.startDisplay = false;
           clearInterval(myInterval);
         }
       }, 1000);
-      
+
     }
   }
 
   back() {
     this.navCtrl.pop()
-    this.speechRecognition.stopListening().then(() =>{
+    this.speechRecognition.stopListening().then(() => {
       console.log("Stopped.")
     });
   }
@@ -167,34 +124,10 @@ export class PlayPage implements OnInit {
     this.generateEquation();
     this.getPermission();
 
-    for(var i = 0; i < this.newEquation.equationVariables.length; i ++){
+    for (var i = 0; i < this.newEquation.equationVariables.length; i++) {
       console.log(this.newEquation.equationVariables[i]);
     }
-    
-    this.equationVars =
-    [
-      {
-        num: this.newEquation.equationVariables[0]
-      },
-      {
-        num: this.newEquation.equationVariables[1]
-      },
-      {
-        num: this.newEquation.equationVariables[2]
-      },
-      {
-        num: this.newEquation.equationVariables[3]
-      },
-      {
-        num: this.newEquation.equationVariables[4]
-      },
-      {
-        num: this.newEquation.equationVariables[5]
-      },
-      {
-        num: this.newEquation.equationVariables[6]
-      },
-    ]
+
   }
 
 }
