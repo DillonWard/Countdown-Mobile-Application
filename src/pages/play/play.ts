@@ -16,7 +16,7 @@ export class PlayPage implements OnInit {
 
   newEquation: Equation = {
     answer: undefined,
-    equationVariables: [undefined],
+    score: undefined,
     equationSign: undefined
   }
 
@@ -26,7 +26,7 @@ export class PlayPage implements OnInit {
   clockDisplay: string;
   equationVars = [];
   matches: String[];
-  tempSum = 0;
+  tempSum: number;
 
   getPermission() {
     this.speechRecognition.hasPermission()
@@ -37,47 +37,29 @@ export class PlayPage implements OnInit {
       });
   }
 
-  generateEquation() {
+  generateEquation():number {
+
+    var answer;
 
     for (var i = 0; i < 2; i++) {
-
-      this.newEquation.equationVariables.push(Math.floor(Math.random() * 9) + 1);
-      console.log(this.newEquation.equationVariables[i])
-      this.equationVars[i] = this.newEquation.equationVariables[i];
-
+      this.equationVars.push(Math.floor(Math.random() * 9) + 1);
     }
 
 
     this.newEquation.equationSign = Math.floor(Math.random() * 2) + 1;
-    console.log(this.newEquation.equationSign);
 
     switch (this.newEquation.equationSign) {
       case 1:
-        this.add(this.newEquation.equationVariables[0], this.newEquation.equationVariables[1]);
-        console.log("add")
+        answer = this.equationVars[0] + this.equationVars[1];
         break;
-      
-        case 2:
-        this.subtract(this.newEquation.equationVariables[0], this.newEquation.equationVariables[1]);
-        console.log("subtract")
+
+      case 2:
+        answer = this.equationVars[0] - this.equationVars[1];
         break;
     }
 
-
-    console.log("Signs generated")
-
-
-  }
-
-
-  add(paramOne, paramTwo) {
-
-    this.newEquation.answer = paramOne + paramTwo;
-  }
-
-  subtract(paramOne, paramTwo) {
-
-    this.newEquation.answer = paramOne - paramTwo;
+    console.log("answer " + answer)
+    return answer;
   }
 
 
@@ -121,12 +103,8 @@ export class PlayPage implements OnInit {
 
   ngOnInit() {
     this.tickTick();
-    this.generateEquation();
     this.getPermission();
-
-    for (var i = 0; i < this.newEquation.equationVariables.length; i++) {
-      console.log(this.newEquation.equationVariables[i]);
-    }
+    this.newEquation.answer = this.generateEquation();
 
   }
 
