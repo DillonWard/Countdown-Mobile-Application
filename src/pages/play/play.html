@@ -5,22 +5,49 @@
     {{clockDisplay}}
   </h4>
 
-  {{matches}}
-  {{newEquation.answer}}
-
+  <div class="correct" *ngIf="found == true">
+    <ion-icon ios="ios-checkmark-circle-outline" md="md-checkmark-circle-outline"></ion-icon>
+  </div>
 
   <ion-grid class="equation-variables" *ngIf="startDisplay == false">
 
-      <ion-row center padding>
-        <ion-col center padding>
-            <button class = "listen-button" id = "listen-button" (click)="startListening()" ion-button>Speak</button>
-        </ion-col>
-      </ion-row>
-    <ion-row>
-      <ion-col *ngFor="let item of equationVars; let i = index">
+    <ion-row *ngIf="newEquation.equationSign == '1'">
+      <ion-col id="var">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="newEquation.equationSign == '2'">
+      <ion-col id="var">
+        <i class="fa fa-minus-circle" aria-hidden="true"></i>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row center padding>
+      <ion-col center id="var" *ngFor="let item of equationVars; let i = index">
         {{item}}
       </ion-col>
     </ion-row>
+
+    <ion-row>
+      <ion-col center padding>
+        <button class="listen-button" id="listen-button" (click)="startListening()" ion-button>Speak</button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row id = "footer">
+      <ion-col>
+          Lives: {{lives}}
+      </ion-col>
+      
+      <ion-col>
+          Timer: {{countdownDisplay}}
+      </ion-col>
+    </ion-row>
+
+
   </ion-grid>
+
 
 </ion-content>

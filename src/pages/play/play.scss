@@ -14,15 +14,25 @@ page-play {
     
     .equation-variables{
         position: fixed;
-        bottom: 50px;
+        bottom: 70px;
         align-content: center;
         right: 3%;
         font-size: 50px;
+    }
+
+    .correct{
+        text-align: center;
+        font-size: 40px;
     }
     #start-time{
         align-content: center;
         text-align: center;
         font-size: 70px;
+    }
+
+    #var{
+        text-align: center;
+        font-size: 100px;
     }
 
     .listen-button{
@@ -36,6 +46,12 @@ page-play {
         color: #EE6E7C;
         align-content: center;
         bottom: 20%;
+    }
+
+    #footer{
+        padding-bottom: 10px;
+        font-size: 20px;
+        text-align: center;
     }
 
 }

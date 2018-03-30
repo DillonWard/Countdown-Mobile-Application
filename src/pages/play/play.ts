@@ -22,11 +22,14 @@ export class PlayPage implements OnInit {
 
   startDisplay = true;
   duration = 4;
+  countdownTime = 60;
+  countdownDisplay: string;
   seconds = "";
   clockDisplay: string;
   equationVars = [];
   matches: String[];
-  tempSum: number;
+  found = false;
+  lives = 3;
 
   getPermission() {
     this.speechRecognition.hasPermission()
@@ -58,7 +61,6 @@ export class PlayPage implements OnInit {
         break;
     }
 
-    console.log("answer " + answer)
     return answer;
   }
 
@@ -68,9 +70,60 @@ export class PlayPage implements OnInit {
       console.log("Listening.")
       this.matches = matches;
       this.changeRef.detectChanges();
+      this.checkAnswer();
     });
+    
   }
 
+  countdown(){
+    if (this.countdownTime > 0) {
+      var myInterval = setInterval(() => {
+        this.countdownTime = this.countdownTime - 1;
+        if (this.duration % 60 < 10) {
+          this.seconds = "" + this.countdownTime % 60;
+        } else {
+          this.seconds = (this.countdownTime % 60).toString();
+        }
+        this.countdownDisplay = this.seconds;
+
+        if (this.countdownDisplay == "-1") {
+          clearInterval(myInterval);
+        }
+      }, 1000);
+
+    }
+
+  }
+
+  checkAnswer(){
+    var duration = 2;
+
+    if(this.matches.find(x => x === this.newEquation.answer.toString())){
+      this.found = true;
+
+      if (duration > 0) {
+        var myInterval = setInterval(() => {
+          duration = duration - 1;
+          if (duration % 60 < 10) {
+            this.seconds = "" + duration % 60;
+          } else {
+            this.seconds = (duration % 60).toString();
+          }
+  
+          if (duration == 0) {
+            this.found = false;
+            this.equationVars = [];
+            this.newEquation.answer = this.generateEquation();
+            clearInterval(myInterval);
+          }
+        }, 1000);
+  
+      }
+    }else{
+      this.lives -= 1;
+    }
+
+  }
 
   tickTick() {
     if (this.duration > 0) {
@@ -85,6 +138,7 @@ export class PlayPage implements OnInit {
 
         if (this.clockDisplay == "-1") {
           this.startDisplay = false;
+          this.countdown();
           clearInterval(myInterval);
         }
       }, 1000);
@@ -105,7 +159,6 @@ export class PlayPage implements OnInit {
     this.tickTick();
     this.getPermission();
     this.newEquation.answer = this.generateEquation();
-
   }
 
 }
