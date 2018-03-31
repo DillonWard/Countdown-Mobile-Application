@@ -27,7 +27,12 @@ export class APIService {
     }
 
     postScore(score: any){
-        return this.db.post(score);
+        return this.db.post(score)
+        .then(function (response) {
+            // handle response
+          }).catch(function (err) {
+            console.log(err);
+          });
     }
 
     getScores(): Observable<Score> {

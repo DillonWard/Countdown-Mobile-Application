@@ -91,6 +91,7 @@ export class PlayPage implements OnInit {
         this.countdownDisplay = this.seconds;
 
         if (this.countdownDisplay == "0") {
+          this.correct = false;
           this.apiservice.postScore(this.score);
           this.running = false;
           clearInterval(myInterval);
@@ -129,6 +130,7 @@ export class PlayPage implements OnInit {
       this.lives -= 1;
 
       if(this.lives == 0){
+        this.correct = false;
         this.running = false;
         this.apiservice.postScore(this.score);
       }
@@ -147,6 +149,7 @@ export class PlayPage implements OnInit {
         this.clockDisplay = this.seconds;
 
         if (this.clockDisplay == "-1") {
+          this.correct = false;
           this.startDisplay = false;
           this.running = true;
           this.countdown();
