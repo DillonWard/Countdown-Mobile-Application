@@ -7,14 +7,22 @@ page-play {
         color: white;
     }
 
+    .game-over{
+        font-size: 50px;
+        text-align: center;
+    }
     .back{
         font-size: 200%;
         color: white;
     }
+
+    #sad-icon{
+        font-size: 150px;
+    }
     
     .equation-variables{
         position: fixed;
-        bottom: 70px;
+        bottom: 30px;
         align-content: center;
         right: 3%;
         font-size: 50px;
@@ -23,6 +31,7 @@ page-play {
     .correct{
         text-align: center;
         font-size: 40px;
+        padding-top: 5px;
     }
     #start-time{
         align-content: center;
@@ -34,6 +43,23 @@ page-play {
         text-align: center;
         font-size: 100px;
     }
+
+    #retry {
+        border-radius: 50%;
+        padding-bottom: 20px;
+        text-align: center;
+        background-color: #FFFEFF;
+        color: #EE6E7C;
+        font-size: 25px;
+        display: inline-block;
+        height: 100px;
+        width: 100px;
+        margin: 0 auto;
+        padding: 0;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+    }
+
 
     .listen-button{
         font-size: 100%;

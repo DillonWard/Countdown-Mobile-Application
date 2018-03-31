@@ -11,6 +11,7 @@ import { MenuPage } from '../pages/menu/menu';
 import { PlayPage } from '../pages/play/play';
 import { ScoresPage } from '../pages/scores/scores';
 import { HelpPage } from '../pages/help/help';
+import { APIService } from '../data/api.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { HelpPage } from '../pages/help/help';
     StatusBar,
     SplashScreen,
     SpeechRecognition,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler}, APIService
   ]
 })
 export class AppModule {}

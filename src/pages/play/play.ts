@@ -1,7 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Equation } from '../../models/equations';
+import { Score } from '../../models/score';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
+import { APIService } from '../../data/api.service';
 
 @IonicPage()
 @Component({
@@ -11,24 +13,30 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
 export class PlayPage implements OnInit {
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private speechRecognition: SpeechRecognition, private changeRef: ChangeDetectorRef) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private speechRecognition: SpeechRecognition, private changeRef: ChangeDetectorRef, private apiservice: APIService) {
   }
 
   newEquation: Equation = {
     answer: undefined,
-    score: undefined,
     equationSign: undefined
+  }
+
+  score: Score = {
+    _id: undefined,
+    _rev: undefined,
+    score: undefined
   }
 
   startDisplay = true;
   duration = 4;
-  countdownTime = 60;
+  countdownTime = 5;
   countdownDisplay: string;
   seconds = "";
   clockDisplay: string;
   equationVars = [];
   matches: String[];
-  found = false;
+  correct = false;
+  running: boolean;
   lives = 3;
 
   getPermission() {
@@ -41,13 +49,10 @@ export class PlayPage implements OnInit {
   }
 
   generateEquation():number {
-
     var answer;
-
     for (var i = 0; i < 2; i++) {
       this.equationVars.push(Math.floor(Math.random() * 9) + 1);
     }
-
 
     this.newEquation.equationSign = Math.floor(Math.random() * 2) + 1;
 
@@ -60,7 +65,6 @@ export class PlayPage implements OnInit {
         answer = this.equationVars[0] - this.equationVars[1];
         break;
     }
-
     return answer;
   }
 
@@ -86,20 +90,22 @@ export class PlayPage implements OnInit {
         }
         this.countdownDisplay = this.seconds;
 
-        if (this.countdownDisplay == "-1") {
+        if (this.countdownDisplay == "0") {
+          this.apiservice.postScore(this.score);
+          this.running = false;
           clearInterval(myInterval);
         }
       }, 1000);
-
     }
-
   }
 
   checkAnswer(){
-    var duration = 2;
+    var duration = 1;
 
     if(this.matches.find(x => x === this.newEquation.answer.toString())){
-      this.found = true;
+      
+      this.correct = true;
+      this.score.score += 1;
 
       if (duration > 0) {
         var myInterval = setInterval(() => {
@@ -111,18 +117,22 @@ export class PlayPage implements OnInit {
           }
   
           if (duration == 0) {
-            this.found = false;
+            this.correct = false;
             this.equationVars = [];
             this.newEquation.answer = this.generateEquation();
             clearInterval(myInterval);
           }
         }, 1000);
-  
       }
     }else{
-      this.lives -= 1;
-    }
 
+      this.lives -= 1;
+
+      if(this.lives == 0){
+        this.running = false;
+        this.apiservice.postScore(this.score);
+      }
+    }
   }
 
   tickTick() {
@@ -138,11 +148,11 @@ export class PlayPage implements OnInit {
 
         if (this.clockDisplay == "-1") {
           this.startDisplay = false;
+          this.running = true;
           this.countdown();
           clearInterval(myInterval);
         }
       }, 1000);
-
     }
   }
 
@@ -153,9 +163,12 @@ export class PlayPage implements OnInit {
     });
   }
 
-
+  retry(){
+    this.navCtrl.setRoot(this.navCtrl.getActive().component);
+  }
 
   ngOnInit() {
+    this.score.score = 0;
     this.tickTick();
     this.getPermission();
     this.newEquation.answer = this.generateEquation();
