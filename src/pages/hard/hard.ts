@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { Equation } from '../../models/equations';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
@@ -20,7 +20,7 @@ export class HardPage {
   }
   startDisplay = true;
   duration = 4;
-  countdownTime = 30;
+  countdownTime = 60;
   countdownDisplay: string;
   seconds = "";
   clockDisplay: string;
@@ -48,11 +48,11 @@ export class HardPage {
 
     switch (this.newEquation.equationSign) {
       case 1:
-        answer = this.equationVars[0] + this.equationVars[1] + this.equationVars[2];
+        answer = this.equationVars[0] + this.equationVars[1] + this.equationVars[2] + this.equationVars[3];
         break;
 
       case 2:
-        answer = this.equationVars[0] - this.equationVars[1] - this.equationVars[2];
+        answer = this.equationVars[0] - this.equationVars[1] - this.equationVars[2] - this.equationVars[3];
         break;
     }
     return answer;

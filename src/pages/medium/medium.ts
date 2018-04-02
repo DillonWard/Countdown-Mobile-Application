@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { Equation } from '../../models/equations';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
@@ -22,7 +22,7 @@ export class MediumPage {
 
   startDisplay = true;
   duration = 4;
-  countdownTime = 45;
+  countdownTime = 60;
   countdownDisplay: string;
   seconds = "";
   clockDisplay: string;
