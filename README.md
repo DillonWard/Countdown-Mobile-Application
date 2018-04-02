@@ -48,14 +48,14 @@ The landing page, as well as many other pages, have a large button bar. Once the
 Once the menu is loaded, the user will be presented with 3 different options. The menu is essentially where the user will select their difficulty. The difficulty of the game difficulty is dependent entirely on the size of the sum. Equations range from 2 - 4 numbers.
 
 ### In-Game
-![alt text](https://github.com/DillonWard/Countdown-Mobile-Application/blob/master/src/assets/imgs/easy-play.png?raw=true) 
-![alt text](https://github.com/DillonWard/Countdown-Mobile-Application/blob/master/src/assets/imgs/hard-play.png?raw=true)
+![alt text](https://github.com/DillonWard/Countdown-Mobile-Application/blob/master/src/assets/imgs/easy.png?raw=true) 
+![alt text](https://github.com/DillonWard/Countdown-Mobile-Application/blob/master/src/assets/imgs/hard.png?raw=true)
 
 
 Once the game is loaded, the user will be presented with 2 - 4 numbers, and a large plus or minus sign to symbolize either add or subtract ALL numbers starting from left to right meaning an answer given can be less than 0.
 
 If time runs out or if the user gives 3 wrong answers the game is over and the content of the page will change to a 'Retry' view.
-
+![alt text](https://github.com/DillonWard/Countdown-Mobile-Application/blob/master/src/assets/imgs/retry.png?raw=true)
 
 ### Architecture
 ![alt text](https://github.com/DillonWard/Countdown-Mobile-Application/blob/master/src/assets/imgs/UML.png?raw=true)
@@ -63,12 +63,9 @@ If time runs out or if the user gives 3 wrong answers the game is over and the c
 There are a total of 5 pages in the application. Each page navigated to is pushed on top of the one sitting behind it, meaning the window for Easy will sit on top of the Menu page, while the Menu page will sit on top of the starter page. Each page has it's own `.html`, `.module.ts`, `.scss`, and `.ts` file.
 
 In each page equations are randomly generated, starting off by generating either 2 - 4 numbers which will be used in the equation. Then, a sign is randomly generated (random number 1 or 2). Depending on the sign generated, the variables will be passed into a `switch case` which will calculate the answer (plus or minus).  The user will then use the 'SPEAK' button and give their answer. Cordova will push matches of what the user said into an array, and if the answer is in any index of the array the equation is correct and a new one is generated. 
+
 ### Gesture Consideration
-
-
-### Learning Outcomes
-
-
+Speech is used for a number of reasons. For one, using speech will help the user practice interacting with Cordova, familiarising them with some of the built-in tools that come with the phone which is becoming more and more necessary as schools and the learning process becomes more of an electronic process. 
 
 # Technologies
 ## Ionic
