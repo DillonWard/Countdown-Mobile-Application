@@ -38,8 +38,22 @@ A [recent study](https://www.commonsensemedia.org/research/the-common-sense-cens
 
 ## Implementation
 ### Landing Page
+![alt text](https://github.com/DillonWard/Countdown-Mobile-Application/blob/master/src/assets/imgs/landing-page.png?raw=true)
+
+The landing page, as well as many other pages, have a large button bar. Once the 'START' button is selected, the menu will drop in. The menu page is pushed on top of the current page and is animated so that it loads in from the top down. The animation is added by using Animate.css.
+
+### Menu
+![alt text](https://github.com/DillonWard/Countdown-Mobile-Application/blob/master/src/assets/imgs/menu.png?raw=true)
+
+Once the menu is loaded, the user will be presented with 3 different options. The menu is essentially where the user will select their difficulty. The difficulty of the game difficulty is dependent entirely on the size of the sum. Equations range from 2 - 4 numbers.
 
 ### In-Game
+![alt text](https://github.com/DillonWard/Countdown-Mobile-Application/blob/master/src/assets/imgs/easy-play.png?raw=true) 
+![alt text](https://github.com/DillonWard/Countdown-Mobile-Application/blob/master/src/assets/imgs/hard-play.png?raw=true)
+
+
+Once the game is loaded, the user will be presented with 2 - 4 numbers, and a large plus or minus sign to symbolize either add or subtract ALL numbers starting from left to right meaning an answer given can be less than 0.
+
 
 ### Architecture
 
