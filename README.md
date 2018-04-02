@@ -55,6 +55,7 @@ Once the menu is loaded, the user will be presented with 3 different options. Th
 Once the game is loaded, the user will be presented with 2 - 4 numbers, and a large plus or minus sign to symbolize either add or subtract ALL numbers starting from left to right meaning an answer given can be less than 0.
 
 If time runs out or if the user gives 3 wrong answers the game is over and the content of the page will change to a 'Retry' view.
+
 ![alt text](https://github.com/DillonWard/Countdown-Mobile-Application/blob/master/src/assets/imgs/retry.png?raw=true)
 
 ### Architecture
@@ -67,6 +68,7 @@ In each page equations are randomly generated, starting off by generating either
 ### Gesture Consideration
 Speech is used for a number of reasons. For one, using speech will help the user practice interacting with Cordova, familiarising them with some of the built-in tools that come with the phone which is becoming more and more necessary as schools and the learning process becomes more of an electronic process. 
 
+Secondly, using voice to solve puzzles will require quicker thinking and is a simple solution to interacting with the game.
 # Technologies
 ## Ionic
 ### What is Ionic?
