@@ -57,6 +57,10 @@ Once the game is loaded, the user will be presented with 2 - 4 numbers, and a la
 
 ### Architecture
 
+
+### Gesture Consideration
+
+
 ### Learning Outcomes
 
 
