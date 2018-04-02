@@ -3,10 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-scores',
-  templateUrl: 'scores.html',
+  selector: 'page-medium',
+  templateUrl: 'medium.html',
 })
-export class ScoresPage {
+export class MediumPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

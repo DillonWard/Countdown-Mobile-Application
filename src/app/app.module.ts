@@ -8,19 +8,18 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MenuPage } from '../pages/menu/menu';
-import { PlayPage } from '../pages/play/play';
-import { ScoresPage } from '../pages/scores/scores';
-import { HelpPage } from '../pages/help/help';
-import { APIService } from '../data/api.service';
+import { EasyPage } from '../pages/easy/easy';
+import { MediumPage } from '../pages/medium/medium';
+import { HardPage } from '../pages/hard/hard';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     MenuPage,
-    PlayPage,
-    ScoresPage,
-    HelpPage
+    EasyPage,
+    MediumPage,
+    HardPage
 
   ],
   imports: [
@@ -32,15 +31,15 @@ import { APIService } from '../data/api.service';
     MyApp,
     HomePage,
     MenuPage,
-    PlayPage,
-    ScoresPage,
-    HelpPage
+    EasyPage,
+    MediumPage,
+    HardPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     SpeechRecognition,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}, APIService
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

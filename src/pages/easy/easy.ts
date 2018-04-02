@@ -3,17 +3,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Equation } from '../../models/equations';
 import { Score } from '../../models/score';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
-import { APIService } from '../../data/api.service';
 
 @IonicPage()
 @Component({
-  selector: 'page-play',
-  templateUrl: 'play.html',
+  selector: 'page-easy',
+  templateUrl: 'easy.html',
 })
-export class PlayPage implements OnInit {
+export class EasyPage implements OnInit {
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private speechRecognition: SpeechRecognition, private changeRef: ChangeDetectorRef, private apiservice: APIService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private speechRecognition: SpeechRecognition, private changeRef: ChangeDetectorRef) {
   }
 
   newEquation: Equation = {
@@ -92,7 +91,6 @@ export class PlayPage implements OnInit {
 
         if (this.countdownDisplay == "0") {
           this.correct = false;
-          this.apiservice.postScore(this.score);
           this.running = false;
           clearInterval(myInterval);
         }
@@ -132,7 +130,6 @@ export class PlayPage implements OnInit {
       if(this.lives == 0){
         this.correct = false;
         this.running = false;
-        this.apiservice.postScore(this.score);
       }
     }
   }

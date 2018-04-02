@@ -10,10 +10,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-help',
-  templateUrl: 'help.html',
+  selector: 'page-hard',
+  templateUrl: 'hard.html',
 })
-export class HelpPage {
+export class HardPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

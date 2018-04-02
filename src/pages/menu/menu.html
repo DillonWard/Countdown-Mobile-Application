@@ -3,6 +3,7 @@
       <ion-item (click)="navigate(item.id)" *ngFor="let item of buttons" no-lines [attr.id] = "item.id">
         <ion-row>
           <ion-col col-5>
+              <ion-icon ios="{{item.icon}}" md="{{item.md}}"></ion-icon>
             <i class = "{{item.icon}} pull-right"></i>
           </ion-col>
           <ion-col col-7>

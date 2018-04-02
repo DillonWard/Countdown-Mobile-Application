@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { ScoresPage } from '../scores/scores';
-import { PlayPage } from '../play/play';
-import { HelpPage } from '../help/help';
+import { EasyPage } from '../easy/easy';
+import { MediumPage } from '../medium/medium';
+import { HardPage } from '../hard/hard';
 
 @IonicPage()
 @Component({
@@ -20,19 +20,22 @@ export class MenuPage implements OnInit{
   ngOnInit(){
     this.buttons = [
       {
-        text:"Play",
+        text:"Easy",
         id: "play",
-        icon: "fa fa-play"
+        icon: "ios-star-outline",
+        md: "md-star-outline"
       },
       {
-        text: "Scores",
+        text: "Medium",
         id: "scores",
-        icon: "fa fa-align-justify"
+        icon: "ios-star-half",
+        md: "md-star-half"
       },
       {
-        text: "Help",
+        text: "Hard",
         id: "help",
-        icon: "fa fa-question"
+        icon: "ios-star",
+        md: "md-star"
       }
     ]
 
@@ -41,13 +44,13 @@ export class MenuPage implements OnInit{
   navigate(param){
 
     if(param == "play"){
-      this.navCtrl.push(PlayPage)
+      this.navCtrl.push(EasyPage)
     }
     else if(param == "scores"){
-      this.navCtrl.push(ScoresPage)
+      this.navCtrl.push(MediumPage)
     }
     else if(param == "help"){
-      this.navCtrl.push(HelpPage)
+      this.navCtrl.push(HardPage)
     }
     else{
       console.log("no")
