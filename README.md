@@ -27,7 +27,7 @@ Connect your mobile device via USB
 Run the program (USB-Debugging Enabled):
 ionic cordova run android --device
 
-To run the program via localhost in web browser:
+To run the program via localhost in web browser (Cordova will not work, just press cancel when entering game mode to continue):
 ionic serve
 ```
 
