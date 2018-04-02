@@ -10,4 +10,4 @@ import { EasyPage } from './easy';
     IonicPageModule.forChild(EasyPage),
   ],
 })
-export class PlayPageModule {}
+export class EasyPageModule {}
