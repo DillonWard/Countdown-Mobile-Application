@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Equation } from '../../models/equations';
-import { Score } from '../../models/score';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 @IonicPage()
@@ -17,18 +16,13 @@ export class EasyPage implements OnInit {
 
   newEquation: Equation = {
     answer: undefined,
+    score: undefined,
     equationSign: undefined
-  }
-
-  score: Score = {
-    _id: undefined,
-    _rev: undefined,
-    score: undefined
   }
 
   startDisplay = true;
   duration = 4;
-  countdownTime = 5;
+  countdownTime = 60;
   countdownDisplay: string;
   seconds = "";
   clockDisplay: string;
@@ -104,7 +98,7 @@ export class EasyPage implements OnInit {
     if(this.matches.find(x => x === this.newEquation.answer.toString())){
       
       this.correct = true;
-      this.score.score += 1;
+      this.newEquation.score += 1;
 
       if (duration > 0) {
         var myInterval = setInterval(() => {
@@ -168,7 +162,7 @@ export class EasyPage implements OnInit {
   }
 
   ngOnInit() {
-    this.score.score = 0;
+    this.newEquation.score = 0;
     this.tickTick();
     this.getPermission();
     this.newEquation.answer = this.generateEquation();
