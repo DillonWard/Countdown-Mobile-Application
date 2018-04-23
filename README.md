@@ -7,6 +7,7 @@ The following repository contains an Ionic Application for the module Gesture Ba
 ## Prerequisites
 * [git](https://git-scm.com/)
 * [Ionic](https://ionicframework.com/)
+* [npm](https://www.npmjs.com/)
 * [Android SDK](https://developer.android.com/studio/index.html)
 * [USB-Debugging Enabled](https://www.embarcadero.com/starthere/xe5/mobdevsetup/android/en/enabling_usb_debugging_on_an_android_device.html)
 
