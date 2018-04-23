@@ -22,6 +22,9 @@ git clone https://github.com/DillonWard/Countdown-Mobile-Application.git
 Change directory into the cloned folder:
 cd <folder name>
 
+Install Node Package Manager:
+npm install
+
 Connect your mobile device via USB
 
 Run the program (USB-Debugging Enabled):
