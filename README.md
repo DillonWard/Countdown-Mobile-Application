@@ -35,6 +35,9 @@ To run the program via localhost in web browser (Cordova will not work, just pre
 ionic serve
 ```
 
+# Video Demonstration
+[![IMAGE ALT TEXT HERE](https://github.com/DillonWard/Countdown-Mobile-Application/blob/master/src/assets/imgs/landing-page.png?raw=true)](https://www.youtube.com/watch?v=oUpu2kFsogE&feature=youtu.be)
+
 # Overview
 Countdown is a Mobile Game Application designed for educational purposes to help teach kids both how to properly annunciate when interacting with Cordova, improving pronounciation, and simple plus or minus Maths.
 ## Research
